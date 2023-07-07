@@ -1,0 +1,38 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname Test) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(require 2htdp/image)
+
+;; Image Image -> Boolean
+
+;; produce true if the first image is larger(have a biger area) than the second one, else produce false.
+
+
+(check-expect (islarger=?
+               (rectangle 2 3 "solid" "red")
+               (circle 1 "solid" "white"))
+               true)
+
+
+(check-expect (islarger=?
+               (rectangle 5 2 "solid" "red")
+               (triangle 20 "solid" "white"))
+               false)
+
+(check-expect (islarger=?
+               (triangle 20 "solid" "white")
+               (triangle 20 "solid" "white"))
+               false)
+
+
+
+;(define (islarger=? img1 img2) true)
+
+;(define (islarger=? img1 img2)
+;         (... img1 img2))
+
+(define (islarger=? img1 img2)
+         (>
+          (* (image-width img1) (image-height img1))
+          (* (image-width img2) (image-height img2))
+          )) 
